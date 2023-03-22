@@ -1,10 +1,7 @@
 <div class="dungeon-pack" id="blue">
-    <p>1.</p>
+    <p>{{ id }} .</p>
     <ul>
-        <li>ddqs </li>
-        <li>dqsdd </li>
-        <li>dqsd </li>
-        <li>dqsd </li>
+        <li *ngFor="let pack of packs">pack </li>
     </ul>
-    <p id="percentages">x%</p>
+    <p id="percentages">{{ percentage }}%</p>
 </div>

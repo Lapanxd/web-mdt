@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DungeonPackComponent implements OnInit {
 
   @Input() id!: number;
+  @Input() packs!: number[];
   @Input() percentage!: number;
 
   constructor() { }

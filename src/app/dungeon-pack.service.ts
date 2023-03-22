@@ -10,7 +10,7 @@ export class DungeonPackService {
   private dungeonPacks: IDungeonPack[] = [
     {
       id: 0,
-      packs: [],
+      packs: [1, 2, 3],
       percentage: 0
     },
   ];
