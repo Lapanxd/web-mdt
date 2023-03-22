@@ -1,0 +1,48 @@
+.dungeon-pack {
+    cursor: pointer;
+    margin-top: 6px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    p {
+        flex: 1;
+    }
+    ul {
+        flex: 7;
+        li {
+            align-items: start;
+            display: inline-block;
+        }
+    }
+}
+
+#blue { 
+    background-color: #3498db4d;
+    border: 1px solid #2980b9;
+}
+#blue:hover { background-color: #2980b9; }
+#green {
+     background-color: #2ecc7056; 
+     border: 1px solid #27ae60;
+}
+#green:hover { background-color: #27ae60; }
+#red {
+     background-color: #e74d3c79; 
+     border: 1px solid #c0392b;
+}
+#red:hover { background-color: #c0392b; }
+#orange {
+     background-color: #e67d2260; 
+     border: 1px solid #d35400;
+}
+#orange:hover { background-color: #d35400; }
+#purple {
+     background-color: #9c59b667; 
+     border: 1px solid #8e44ad;
+}
+#purple:hover { background-color: #8e44ad; }
+#canard {
+     background-color: #1abc9c53;
+     border: 1px solid #16a085;
+}
+#canard:hover { background-color: #16a085;}
