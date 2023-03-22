@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DungeonPackService } from '../dungeon-pack.service';
-import { IDungeonPack } from '../models/dungeon-pack';
+
 
 @Component({
   selector: 'app-dungeon',
@@ -10,17 +8,10 @@ import { IDungeonPack } from '../models/dungeon-pack';
 })
 export class DungeonComponent implements OnInit {
 
-  dungeonPacks!: IDungeonPack[];
 
-  dungeonPackSubscribtion!: Subscription;
-
-  constructor(private dungeonPackService: DungeonPackService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    // this.dungeonPackSubscribtion = this.dungeonPackService.dungeonPacks$.subscribe((dungeonPacks: IDungeonPack[]) => {
-    //   this.dungeonPacks.id,
-
-    // })
   }
 
 }

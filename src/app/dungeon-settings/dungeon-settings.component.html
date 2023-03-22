@@ -13,9 +13,9 @@
             <button id="reset">Reset</button>
         </div>
         
-        <progress value="50" max="100"></progress>
+        <progress value="{{ dungeonPercentages }}" max="100"></progress>
 
-        <app-dungeon-pack></app-dungeon-pack>
+        <app-dungeon-pack [id]="dungeonPack.id" [percentage]="dungeonPack.percentage" [packs]="dungeonPack.packs" *ngFor="let dungeonPack of dungeonPacks"></app-dungeon-pack>
 
         <button class="new-pull" (click)="addPull()">+ Add pull</button>
     </div>
