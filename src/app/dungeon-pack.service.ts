@@ -28,7 +28,6 @@ export class DungeonPackService {
     })
   }
 
-
   addNewPack(): void {
     let lastId = this.dungeonPacks.map(pack => pack.id).reduce((prev, curr) => curr > prev ? curr : prev);
     this.dungeonPacks.push({
