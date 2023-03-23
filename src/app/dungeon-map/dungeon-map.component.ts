@@ -31,7 +31,6 @@ export class DungeonMapComponent implements OnInit {
       maxBounds: bounds
     }).setView([40.7461, -74.1840], 14);
 
-
     // Fonction pour récupérer la lat et long du clique du cuseur sur la map (pour placer les mob)
     enemies.forEach(element => {
       const marker = L.marker([element.posX, element.posY], {icon: this.setEnemy(element.name)}).addTo(this.map);

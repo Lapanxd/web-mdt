@@ -4,15 +4,17 @@
     width: 100%;
     border-radius: 5px;
     display: flex;
+    font-weight: 900;
     p {
         flex: 1;
+        line-height: 100%;
     }
-    ul {
+    .packs {
+        line-height: 100%;
         flex: 7;
-        li {
-            align-items: start;
-            display: inline-block;
-        }
+    }
+    .percentages {
+        padding-right: 10px;
     }
 }
 

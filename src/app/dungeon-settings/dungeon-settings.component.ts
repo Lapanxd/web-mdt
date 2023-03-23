@@ -11,11 +11,14 @@ import { IDungeonPack } from '../models/dungeon-pack';
 export class DungeonSettingsComponent implements OnInit {
 
   dungeonPacks!: IDungeonPack[];
-  dungeonPercentages!: number;
   dungeonPackSubscribtion!: Subscription;
+
+  dungeonPercentages!: number;
   dungeonPercentagesSubscribtion!: Subscription;
-  activeDungeonPackSubscribtion!: Subscription;
+
   activeDungeonPack!: number;
+  activeDungeonPackSubscribtion!: Subscription;
+  
 
   constructor(private dungeonPackService: DungeonPackService) {}
 
@@ -33,10 +36,12 @@ export class DungeonSettingsComponent implements OnInit {
     });
   }
 
-  addPull = () => { this.dungeonPackService.addNewPack(); }
+  addPull = () => {
+    this.dungeonPackService.addNewPack(); 
+    this.dungeonPackService.activePack++;
+  }
 
   setActiveDungeonPack(id: number){
-    this.dungeonPackService.activePack$.next(id);
     this.dungeonPackService.activePack = id;
   }
 
@@ -52,11 +57,5 @@ export class DungeonSettingsComponent implements OnInit {
     if(this.activeDungeonPackSubscribtion){
       this.activeDungeonPackSubscribtion.unsubscribe();
     }
-  }
-
-  test(){
-    this.dungeonPackService.updatePack(20);
-    // this.dungeonPacks[0].percentage+=10;
-    // this.dungeonPacks[0].packs = [5, 3];
   }
 }

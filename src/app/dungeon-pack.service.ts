@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IDungeonPack } from './models/dungeon-pack';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, scan } from 'rxjs';
+import { packPercents } from './dungeon-databases/tjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class DungeonPackService {
     },
   ];
 
-  public activePack!: number;
+  public activePack: number = 0;
+  public totalPercentage: number = 0;
 
   public dungeonPacks$: BehaviorSubject<IDungeonPack[]>;
   public dungeonPercentage$: BehaviorSubject<number>;
@@ -23,7 +25,7 @@ export class DungeonPackService {
 
   constructor() { 
     this.dungeonPacks$ = new BehaviorSubject<IDungeonPack[]>(this.dungeonPacks);
-    this.dungeonPercentage$ = new BehaviorSubject<number>(0);
+    this.dungeonPercentage$ = new BehaviorSubject<number>(this.totalPercentage);
     this.activePack$ = new BehaviorSubject<number>(this.activePack);
 
     this.dungeonPacks.forEach((pack) => {
@@ -41,6 +43,17 @@ export class DungeonPackService {
   }
 
   updatePack(pack: number): void {
-    this.dungeonPacks[this.activePack].packs = [...this.dungeonPacks[this.activePack].packs, pack];
-   }
+    const isPackAlreadyPresent = this.dungeonPacks.some(dungeonPack => dungeonPack.packs.includes(pack));
+    if(!isPackAlreadyPresent){
+      this.dungeonPacks[this.activePack].packs = [...this.dungeonPacks[this.activePack].packs, pack];
+      this.dungeonPacks[this.activePack].percentage+=packPercents[pack-1];  
+      this.updateTotalPercentage(pack)
+    } else {
+      alert("Ce pack est déjà dans un pull.")
+    }
+  }
+
+  updateTotalPercentage(pack: number): void {
+    this.dungeonPercentage$.next(parseFloat((this.dungeonPercentage$.value + packPercents[pack-1]).toFixed(2)));
+  }
 }

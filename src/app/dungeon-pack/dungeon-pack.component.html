@@ -1,7 +1,5 @@
-<div class="dungeon-pack" id="blue" (click)="setActiveDungeonPack()">
+<div class="dungeon-pack" id="canard" (click)="setActiveDungeonPack()">
     <p>{{ id }} .</p>
-    <ul>
-        {{ packs }}
-    </ul>
-    <p id="percentages">{{ percentage }}%</p>
+    <p class="packs">{{ packs }}</p>
+    <p class="percentages">{{ percentage.toFixed(2) }}%</p>
 </div>

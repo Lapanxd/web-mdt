@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { DungeonPackService } from '../dungeon-pack.service';
-import { IDungeonPack } from '../models/dungeon-pack';
 
 @Component({
   selector: 'app-dungeon-pack',
@@ -20,7 +17,6 @@ export class DungeonPackComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
   setActiveDungeonPack(){
     this.dungeonPackState.emit(this.id)
