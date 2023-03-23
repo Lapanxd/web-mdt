@@ -1,7 +1,5 @@
-<div class="dungeon-pack" id="blue">
+<div class="dungeon-pack" id="canard" (click)="setActiveDungeonPack()">
     <p>{{ id }} .</p>
-    <ul>
-        <li *ngFor="let pack of packs">pack </li>
-    </ul>
-    <p id="percentages">{{ percentage }}%</p>
+    <p class="packs">{{ packs }}</p>
+    <p class="percentages">{{ percentage.toFixed(2) }}%</p>
 </div>

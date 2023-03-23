@@ -11,9 +11,14 @@ import { IDungeonPack } from '../models/dungeon-pack';
 export class DungeonSettingsComponent implements OnInit {
 
   dungeonPacks!: IDungeonPack[];
-  dungeonPercentages!: number;
   dungeonPackSubscribtion!: Subscription;
+
+  dungeonPercentages!: number;
   dungeonPercentagesSubscribtion!: Subscription;
+
+  activeDungeonPack!: number;
+  activeDungeonPackSubscribtion!: Subscription;
+  
 
   constructor(private dungeonPackService: DungeonPackService) {}
 
@@ -25,8 +30,32 @@ export class DungeonSettingsComponent implements OnInit {
     this.dungeonPercentagesSubscribtion = this.dungeonPackService.dungeonPercentage$.subscribe((dungeonPercentages: number) => {
       this.dungeonPercentages = dungeonPercentages;
     });
+
+    this.activeDungeonPackSubscribtion = this.dungeonPackService.activePack$.subscribe((activePack: number) => {
+      this.activeDungeonPack = activePack;
+    });
   }
 
-  addPull = () => { this.dungeonPackService.addNewPack(); }
+  addPull = () => {
+    this.dungeonPackService.addNewPack(); 
+    this.dungeonPackService.activePack++;
+  }
 
+  setActiveDungeonPack(id: number){
+    this.dungeonPackService.activePack = id;
+  }
+
+  ngOnDestroy(): void {
+    if(this.dungeonPackSubscribtion){
+      this.dungeonPackSubscribtion.unsubscribe();
+    }
+
+    if(this.dungeonPercentagesSubscribtion){
+      this.dungeonPercentagesSubscribtion.unsubscribe();
+    }
+
+    if(this.activeDungeonPackSubscribtion){
+      this.activeDungeonPackSubscribtion.unsubscribe();
+    }
+  }
 }
