@@ -10,22 +10,25 @@ export class DungeonPackService {
   private dungeonPacks: IDungeonPack[] = [
     {
       id: 0,
-      packs: [1, 2, 3],
+      packs: [],
       percentage: 0
-
     },
   ];
 
+  public activePack!: number;
+
   public dungeonPacks$: BehaviorSubject<IDungeonPack[]>;
   public dungeonPercentage$: BehaviorSubject<number>;
+  public activePack$: BehaviorSubject<number>;
 
   constructor() { 
     this.dungeonPacks$ = new BehaviorSubject<IDungeonPack[]>(this.dungeonPacks);
     this.dungeonPercentage$ = new BehaviorSubject<number>(0);
+    this.activePack$ = new BehaviorSubject<number>(this.activePack);
 
     this.dungeonPacks.forEach((pack) => {
       this.dungeonPercentage$.next(this.dungeonPercentage$.value + pack.percentage)
-    })
+    });
   }
 
   addNewPack(): void {
@@ -36,4 +39,8 @@ export class DungeonPackService {
       percentage: 0
     });
   }
+
+  updatePack(pack: number): void {
+    this.dungeonPacks[this.activePack].packs = [...this.dungeonPacks[this.activePack].packs, pack];
+   }
 }
